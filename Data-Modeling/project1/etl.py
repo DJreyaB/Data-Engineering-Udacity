@@ -52,10 +52,10 @@ def process_log_file(cur, filepath):
     df = pd.read_json(filepath, lines = True)
 
     # filter by NextSong action
-    df = df[df['auth'] == 'NextSong']
+    df = df[df['page'] == 'NextSong']
 
     # convert timestamp column to datetime
-    t = pd.to_datetime(df['ts'])
+    t = pd.to_datetime(df['ts'], unit = 'ms')
     
     # insert time data records
     #start_time, hour, day, week, month, year, weekday
@@ -65,7 +65,7 @@ def process_log_file(cur, filepath):
     time_df = pd.DataFrame(dict(zip(column_labels, time_data)))
 
     for i, row in time_df.iterrows():
-        cur.execute(time_table_insert, list(row))
+        cur.execute(time_table_insert, row)
 
     # load user table
     user_df =  df[['userId', 'firstName', 'lastName', 'gender','level']]
