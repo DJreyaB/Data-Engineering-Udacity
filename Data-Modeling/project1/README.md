@@ -4,6 +4,11 @@
 
 Sparkify, a music streaming startup, would like to analyze their song and user activity data from their app. The raw data was stored within multiple JSON files. The file create_table.py will create the structure of the tables within the data base. 
 
+## Execution
+1. Run create_tables.py using "python create_tables.py" in terminal.
+2. Run cells in test.ipynb to verify tables were created correctly.
+3. Run etl.py using "python create_tables.py" in terminal.
+
 ## Schema Design
 
 The database is designed using a star schema, a great design choice for queries with aggregation.  
@@ -11,6 +16,7 @@ The fact table is songplays and all other tables are dimension tables relating t
 
 ### related files
 1. create_tables.py
+    - crea
 
 2. sql_queries.py
 
@@ -43,5 +49,6 @@ Transform : The time data is give as milliseconds. To convert it to different ti
 
 Load : The data is then inserted into postgres tables using python passed to the postgres queries.
 
-
+### Related Files
+1. etl.py
 

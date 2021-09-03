@@ -8,8 +8,8 @@ from sql_queries import *
 def process_song_file(cur, filepath):
     '''
     Description:
-        Convert data at given filepath into artist and song dataframes.
-        Insert the data into sql databases.
+        Converts data at given filepath into artist and song dataframes.
+        Inserts the data into sql databases.
 
     Arguments:
         cur : a cursor object
@@ -33,7 +33,13 @@ def process_song_file(cur, filepath):
 def process_log_file(cur, filepath):
     '''
     Description:
-        Convert log files into timestamp
+        Converts time in milliseconds, found in log files, into timestamp.
+        Uses converted timestamps to gather hour, day, week, month, year and weekday.
+        Stores user data from log files in a DataFrame.
+        Inserts user data and time data into corresponding postgres tables.
+        Iterates over log files DataFrame while querying database for corresponding artist and song ids.
+        Inserts the gathered data songplay table.
+
 
     Arguments:
         cur : a cursor object
@@ -92,7 +98,7 @@ def process_data(cur, conn, filepath, func):
     Description:
         Gathers json files from supplied filepath and append to a list.
         Iterates over files to process using supplied func and commit the process to the database.
-        Print count of processed files over total count of files.
+        Prints count of processed files over total count of files.
 
     Arguments:
         cur : a cursor object
@@ -124,9 +130,10 @@ def process_data(cur, conn, filepath, func):
 def main():
     '''
     Description:
-        Instantiate connection.
-        Process song files for database insertion.
-        Process log files for database insertion.
+        Creates connection to Sparkify database and cursor object.
+        Processes files with filepath='data/song_data' using 'process_song_file' function.
+        Processes files with filepath='data/log_data'' using 'process_log_file' function.
+        Closes connection
 
     Arguments:
         None
