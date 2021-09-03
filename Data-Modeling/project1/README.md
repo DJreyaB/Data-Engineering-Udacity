@@ -16,9 +16,11 @@ The fact table is songplays and all other tables are dimension tables relating t
 
 ### related files
 1. create_tables.py
-    - crea
+    - Includes functions for database creation and drop/create table query exection.
+    - Pulls queries from sql_queries.py
 
 2. sql_queries.py
+    - Contains queries for inserting, dropping, and creating tables
 
 ### Fact Table
 
@@ -51,4 +53,11 @@ Load : The data is then inserted into postgres tables using python passed to the
 
 ### Related Files
 1. etl.py
+    - Includes functions for processing json files and inserting data into database.
 
+#### Miscellaneous Files
+1. etl.ipynb
+    - Step by step testing of etl.py. 
+
+2. test.ipynb
+    - Run to test table creation and insertion was done correctly.
