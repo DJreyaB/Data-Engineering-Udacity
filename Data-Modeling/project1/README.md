@@ -1,5 +1,12 @@
 # Data Modeling With Postgres
 
+## Installation
+The provided requirements file contains all external python libraries needed for to run this project. Install using:
+```
+pip install -r requirements.txt
+```
+##### Note : Does not include dependencies that should be automatically downloaded with libraries
+
 ## Purpose
 
 Sparkify, a music streaming startup, would like to analyze their song and user activity data from their app. The raw data was stored within multiple JSON files. The file create_table.py will create the structure of the tables within the data base. 
