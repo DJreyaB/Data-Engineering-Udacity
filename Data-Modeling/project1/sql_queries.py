@@ -12,11 +12,11 @@ songplay_table_create = ("""
 CREATE TABLE IF NOT EXISTS songplays
 (
 songplay_id SERIAL PRIMARY KEY,
-start_time timestamp,
-user_id INT,
+start_time timestamp REFERENCES time,
+user_id INT REFERENCES users,
 level TEXT,
-song_id TEXT,
-artist_id TEXT,
+song_id TEXT REFERENCES songs,
+artist_id TEXT REFERENCES artists,
 session_id INT,
 location TEXT,
 user_agent TEXT
@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS songs
 (
 song_id TEXT PRIMARY KEY, 
 title TEXT , 
-artist_id TEXT , 
+artist_id TEXT REFERENCES artists, 
 year INT, 
 duration float)
 """)
@@ -67,7 +67,7 @@ weekday TEXT)
 # INSERT RECORDS
 
 songplay_table_insert = ("""
-INSERT INTO songplays ( start_time, user_id, level, song_id, artist_id, session_id, location, user_agent)
+INSERT INTO songplays (start_time, user_id, level, song_id, artist_id, session_id, location, user_agent)
 VALUES(%s, %s, %s, %s, %s, %s, %s, %s)
 ON CONFLICT (songplay_id) DO NOTHING
 """)
@@ -112,5 +112,5 @@ AND duration = %s
 
 # QUERY LISTS
 
-create_table_queries = [songplay_table_create, user_table_create, song_table_create, artist_table_create, time_table_create]
+create_table_queries = [time_table_create, user_table_create, artist_table_create, song_table_create, songplay_table_create]
 drop_table_queries = [songplay_table_drop, user_table_drop, song_table_drop, artist_table_drop, time_table_drop]
