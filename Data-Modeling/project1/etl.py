@@ -56,6 +56,7 @@ def process_log_file(cur, filepath):
 
     # convert timestamp column to datetime
     t = pd.to_datetime(df['ts'], unit = 'ms')
+    df['ts'] = t
     
     # insert time data records
     #start_time, hour, day, week, month, year, weekday
