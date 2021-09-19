@@ -1,7 +1,7 @@
 # Data Modeling With Postgres
 
 ## Installation
-The provided requirements file contains all external python libraries needed for to run this project. Install using:
+The provided requirements file contains all external python libraries needed to run this project. Install using:
 ```
 pip install -r requirements.txt
 ```
